@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <p>Search Page</p>
+
+    <div class="row">
+        <p *ngIf="hasError" class="alert alert-danger mt-2">{{errorMessage}}</p>
+    <div class="col-md-12">
+        <label for="search">Country Name</label>
+        <input type="text" name="search" id="search" [(ngModel)]="search" class="form-control">
+    </div>
+   
+    <div class="col-md-4 mt-2">
+        <button (click)="searchByCountryName()" class="btn btn-primary">
+            Search
+        </button>
+    </div>
+    </div>
+    <div>
+        <ul>
+            <li *ngFor="let team of teams">
+               <a routerLink="/team/{{team._id}}"> {{team.country}} </a>
+          
+            </li>
+        </ul>
+    </div>
+    </div>

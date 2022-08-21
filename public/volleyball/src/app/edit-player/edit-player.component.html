@@ -1,0 +1,24 @@
+<div class="container-fluid">
+<form [formGroup]="editPlayerForm" (ngSubmit)="editPlayer()">
+    <p *ngIf="hasError" class="alert alert-danger mt-2">{{errorMessage}}</p>
+
+<div class="row">
+    <div class="col-md-12">
+        <label for="players">Name</label>
+        <input type="text" formControlName="name" id="name"  class="form-control" > 
+        <div *ngIf="editPlayerForm.get('name')?.touched && !editPlayerForm.get('name')?.valid">
+           {{player_name_required}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <label for="players">Start Date</label>
+        <input type="date" formControlName="start_date" id="start_date" class="form-control"> 
+         
+    </div>
+
+    <div class="col-md-4 mt-2">
+        <button type="submit" class="btn btn-primary">Update Player</button>
+    </div>
+</div>
+</form>
+</div>

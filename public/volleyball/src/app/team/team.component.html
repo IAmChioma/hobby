@@ -1,0 +1,32 @@
+<div class="container-fluid"  *ngIf="isLoggedIn">
+
+<p *ngIf="hasSuccess" class="alert alert-success">{{successMessage}}</p>
+<h5>Team Details</h5>
+<p>Country: {{team.country | uppercase}}</p>
+<p>Year established: {{team.year}}</p>
+<p>Latitude: {{team.coordinates[0]}}</p>
+<p>Longitude: {{team.coordinates[1]}}</p>
+
+<p>The players in this team are:</p>
+<ul>
+    <li *ngFor="let player of team.players">
+        <a routerLink="/team/{{id}}/players/{{player._id}}"> {{player.name}} </a>
+    </li>
+</ul>
+<div class="row">
+    <div class="col-md-4">
+<button (click)="deleteATeam(team._id)" class="btn btn-danger" id="edit-btn">Delete</button>
+<button (click)="showEdit()" class="btn btn-info" id="delete-btn">Edit</button>
+<button (click)="showAddPlayerForm()" class="btn btn-secondary">New player</button>
+</div>
+</div>
+<div *ngIf="edit">
+    <app-edit-team [team]=team  (editTeamEventEmmiter)="reloadTeamAndHideForm($event)"></app-edit-team>
+</div>
+<div *ngIf="addPlayer">
+    <app-add-player [team]=team (addPlayerEventEmmiter)="hideAddPlayerForm($event)"></app-add-player>
+</div>
+</div>
+<div  *ngIf="!isLoggedIn">
+    {{login_to_view}}
+</div>

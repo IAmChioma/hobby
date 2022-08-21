@@ -1,0 +1,38 @@
+<div class="container-fluid">
+<form #teamForm="ngForm" (ngSubmit)="addTeam(teamForm)">
+
+    <p *ngIf="hasError" class="alert alert-danger">{{errorMessage}}</p>
+    <div class="row">
+
+   
+    <div class="col-md-12">
+        <label for="country">Country</label>
+            <input type="text" name="country" id="country" [(ngModel)]="team.country" #country="ngModel" required class="form-control">
+        <div *ngIf="!country.valid && country.touched">
+           {{team_country_required}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <label for="year" class="my-label">Year</label>
+            <input type="number" name="year" id="year" [(ngModel)]="team.year" #year="ngModel" required  class="form-control">
+            <div *ngIf="!year.valid && year.touched">
+                {{team_year_required}}
+             </div>
+    </div>
+    <div class="col-md-12">
+        <label for="latitude" >Latititude</label>
+            <input type="number" name="latitude" id="latitude" [(ngModel)]="team.latitude" #latitude="ngModel"  class="form-control">
+        
+    </div>
+    <div class="col-md-12">
+        <label for="longitude">Longitude</label>
+            <input type="number" name="longitude" id="longitude" [(ngModel)]="team.longitude" #longitude="ngModel"  class="form-control">
+        
+    </div>
+
+    <div class="col-md-4 mt-2">
+        <button type="submit" class="btn btn-primary">Add Team</button>
+    </div>
+    </div>
+</form> 
+</div>

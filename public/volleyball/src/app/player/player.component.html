@@ -1,0 +1,21 @@
+<div class="container-fluid">
+<h5> Player Details</h5>
+<p *ngIf="hasSuccess" class="alert alert-success mt-2">{{successMessage}}</p>
+<div class="col-md-2">
+    <p>Name : {{player.name}} </p>
+
+    <p>StartDate : {{player.start_date | date}} </p>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+    <button (click)="showEdit()" class="btn btn-info" id="edit-btn">Edit</button>
+    <button (click)="deleteAPlayer()" class="btn btn-danger" id="delete-btn">Delete</button>
+    <button (click)="goBack()" class="btn btn-secondary">Go Back</button>
+    </div>
+</div>
+<div *ngIf="edit">
+<app-edit-player  [player]="player" (editPlayerEventEmmiter)="reloadPlayerAndHideForm($event)"></app-edit-player>
+</div>
+</div>

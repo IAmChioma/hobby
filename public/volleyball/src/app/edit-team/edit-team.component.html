@@ -1,0 +1,37 @@
+<div class="container-fluid">
+
+
+<form [formGroup]="editTeamForm" (ngSubmit)="editTeam()">
+    <p *ngIf="hasSuccess" class="alert alert-success">{{successMessage}}</p>
+    <p *ngIf="hasError" class="alert alert-danger">{{errorMessage}}</p>
+    <div class="row">
+    <div class="col-md-12">
+        <label for="country">Country</label>
+            <input type="text" name="country" id="country" formControlName="country" class="form-control">
+        <div *ngIf="editTeamForm.get('country')?.touched && !editTeamForm.get('country')?.valid">
+            {{team_country_required}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <label for="year">Year</label>
+            <input type="number" name="year" id="year" formControlName="year"  class="form-control">
+            <div *ngIf="editTeamForm.get('year')?.touched && !editTeamForm.get('year')?.valid">
+                {{team_year_required}}
+            </div>
+    </div>
+    <div class="col-md-12">
+        <label for="year" >Latititude</label>
+            <input type="number" name="latitude" id="latitude" formControlName="longitude" class="form-control">
+        
+    </div>
+    <div class="col-md-12">
+        <label for="year">Longitude</label>
+            <input type="number" name="longitude" id="longitude" formControlName="latitude" class="form-control">
+        
+    </div>
+    <div class="col-md-4 mt-2">
+        <button type="submit" [disabled]="!editTeamForm.valid" class="btn btn-primary">Update Team</button>
+    </div>
+    </div>
+</form>
+</div>

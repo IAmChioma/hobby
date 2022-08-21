@@ -1,0 +1,8 @@
+<div *ngIf="isLoggedIn">
+    <p> Hi {{name}}, checkout the  Volleyball teams by clicking <a routerLink="/teams">here</a> </p>
+    <p>You can also view details of each team</p>
+</div>
+<div *ngIf="!isLoggedIn">
+    <p> Hi {{guest}}, checkout the  Volleyball teams by clicking <a routerLink="/teams">here</a> </p>
+    <p>You will have to login to view details of each team</p>
+</div>
